@@ -1120,7 +1120,7 @@ namespace agg
             char fn[1024];
             strcpy(fn, file);
             int len = strlen(fn);
-            if(len < 4 || stricmp(fn + len - 4, ".BMP") != 0)
+            if(len < 4 || _stricmp(fn + len - 4, ".BMP") != 0)
             {
                 strcat(fn, ".bmp");
             }
@@ -1139,7 +1139,7 @@ namespace agg
             char fn[1024];
             strcpy(fn, file);
             int len = strlen(fn);
-            if(len < 4 || stricmp(fn + len - 4, ".BMP") != 0)
+            if(len < 4 || _stricmp(fn + len - 4, ".BMP") != 0)
             {
                 strcat(fn, ".bmp");
             }

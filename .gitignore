@@ -1,0 +1,12 @@
+*.vs
+*.vscode
+*.obj
+*.lib
+*.exe
+*.pcb
+*.vc.*db
+ipch/*
+bin/*
+*/debug/*
+*/release/*
+
