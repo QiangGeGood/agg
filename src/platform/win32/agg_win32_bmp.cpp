@@ -11,6 +11,8 @@
 #include "platform/win32/agg_win32_bmp.h"
 #include "agg_basics.h"
 
+#include <math.h>
+
 namespace agg
 {
 
@@ -552,14 +554,14 @@ namespace agg
     //------------------------------------------------------------------------
     unsigned pixel_map::height() const
     {
-        return m_bmp->bmiHeader.biHeight;
+        return abs(m_bmp->bmiHeader.biHeight);
     }
 
     //------------------------------------------------------------------------
     int pixel_map::stride() const
     {
         return calc_row_len(m_bmp->bmiHeader.biWidth, 
-                            m_bmp->bmiHeader.biBitCount);
+                            m_bmp->bmiHeader.biBitCount) * (m_bmp->bmiHeader.biHeight >= 0 ? 1 : -1);
     }
 
 
@@ -571,7 +573,7 @@ namespace agg
         {
             m_img_size  = calc_row_len(bmp->bmiHeader.biWidth, 
                                        bmp->bmiHeader.biBitCount) * 
-                          bmp->bmiHeader.biHeight;
+                          abs(bmp->bmiHeader.biHeight);
 
             m_full_size = calc_full_size(bmp);
             m_bmp       = bmp;
